@@ -14,6 +14,8 @@ function refreshCaptcha() {
 async function submitForm(event) {
   event.preventDefault();
 
+  //   const button = event.target.querySelector("button");
+  //   button.classList.add("loading");
   // Verificar reCAPTCHA
   //   let token;
   //   try {
@@ -64,11 +66,7 @@ async function submitForm(event) {
         body: JSON.stringify(formData),
       }
     );
-    if (!response.ok) {
-      throw new Error("Erro ao enviar os dados: " + response);
-    }
 
-    const result = await response.json();
     alert(
       "Obrigado por se inscrever! Em breve você receberá os materiais por email."
     );
@@ -76,6 +74,10 @@ async function submitForm(event) {
   } catch (error) {
     alert("Erro ao processar sua inscrição: " + error.message);
   }
+  //   finally {
+  //     // Remover loading independentemente do resultado
+  //     button.classList.remove("loading");
+  //   }
   alert(
     "Obrigado por se inscrever! Em breve você receberá os materiais por email."
   );
