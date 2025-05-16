@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="css/magnific-popup.css">
     <!-- Main Custom Css -->
     <link href="css/custom.css" rel="stylesheet" media="screen">
+    <!-- Adicionar link para o intl-tel-input CSS e bandeiras -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
 </head>
 
 <body>
@@ -118,7 +120,8 @@
         }
 
         .modal-form-group input,
-        .modal-form-group select {
+        .modal-form-group select,
+        .modal-form-group textarea {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid #ddd;
@@ -127,15 +130,21 @@
             transition: all 0.3s ease;
         }
 
+        .modal-form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
         .modal-form-group input:focus,
-        .modal-form-group select:focus {
+        .modal-form-group select:focus,
+        .modal-form-group textarea:focus {
             border-color: #007bff;
             outline: none;
             box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
         }
 
         .modal-form-submit {
-            background: #007bff;
+            background: #002B5B;
             color: #fff;
             padding: 15px 30px;
             border: none;
@@ -144,10 +153,12 @@
             cursor: pointer;
             width: 100%;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 500;
         }
 
         .modal-form-submit:hover {
-            background: #0056b3;
+            background: #001B3B;
         }
 
         .fechar {
@@ -163,52 +174,83 @@
         .fechar:hover {
             color: #007bff;
         }
+
+        .checkbox-group {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 3px;
+            width: auto;
+        }
+
+        /* Estilo para o componente de telefone */
+        .iti {
+            width: 100%;
+        }
     </style>
 
     <!-- Modal Form -->
     <div id="modalForm" class="modal">
         <div class="modal-content">
             <span class="fechar" onclick="fecharModal()">&times;</span>
-            <h2>Inscreva-se para Aceder aos Conteúdos</h2>
             <form id="inscricaoForm" onsubmit="submitForm(event)">
+                <input type="hidden" name="campanha" value="fundo_pensoes">
                 <div class="modal-form-group">
-                    <label for="nome">Nome Completo*</label>
-                    <input type="text" id="nome" name="nome" required>
+                    <input type="text" id="nome" name="nome" placeholder="Nome*" required>
                 </div>
                 
                 <div class="modal-form-group">
-                    <label for="email">Email Profissional*</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="text" id="cargo" name="cargo" placeholder="Cargo*" required>
                 </div>
                 
                 <div class="modal-form-group">
-                    <label for="empresa">Empresa/Instituição*</label>
-                    <input type="text" id="empresa" name="empresa" required>
-                </div>
-                
-                <div class="modal-form-group">
-                    <label for="cargo">Cargo*</label>
-                    <input type="text" id="cargo" name="cargo" required>
-                </div>
-                
-                <div class="modal-form-group">
-                    <label for="telefone">Telefone*</label>
-                    <input type="tel" id="telefone" name="telefone" required>
-                </div>
-                
-                <div class="modal-form-group">
-                    <label for="setor">Setor de Atuação*</label>
-                    <select id="setor" name="setor" required>
-                        <option value="">Selecione...</option>
-                        <option value="fundo_pensao">Fundo de Pensão</option>
-                        <option value="seguros">Seguros</option>
-                        <option value="banco">Banco</option>
-                        <option value="consultoria">Consultoria</option>
-                        <option value="outro">Outro</option>
-                    </select>
+                    <input type="text" id="empresa" name="empresa" placeholder="Empresa*" required>
                 </div>
 
-                <button type="submit" class="modal-form-submit">Inscrever-me</button>
+                <div class="modal-form-group">
+                    <select id="tamanho" name="tamanho" required>
+                        <option value="">Tamanho</option>
+                        <option value="micro">Microempresa (1–9)</option>
+                        <option value="pequena">Pequena empresa (10–49)</option>
+                        <option value="media">Média empresa (50–199)</option>
+                        <option value="grande">Grande empresa (200+)</option>
+                    </select>
+                </div>
+                
+                <div class="modal-form-group">
+                    <input type="url" id="website" name="website" placeholder="Website (Opcional)">
+                </div>
+                
+                <div class="modal-form-group">
+                    <input type="email" id="email" name="email" placeholder="E-Mail*" required>
+                </div>
+                
+                <div class="modal-form-group">
+                    <input type="tel" id="telefone" name="telefone" placeholder="Telefone*" required>
+                </div>
+                
+                <div class="modal-form-group">
+                    <textarea id="informacao" name="informacao" placeholder="Informação (Opcional)"></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="autorizo" required>
+                        Autorizo o recebimento de materiais adicionais e contato da equipe comercial da TIS *
+                    </label>
+                </div>
+
+                <button type="submit" class="modal-form-submit">Confirmar</button>
             </form>
         </div>
     </div>
@@ -1092,7 +1134,19 @@
     <!-- Main Custom js file -->
     <script src="js/function.js"></script>
 
+    <!-- Adicionar scripts necessários -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
     <script>
+        // Inicializar o componente de telefone
+        const phoneInput = document.querySelector("#telefone");
+        const iti = window.intlTelInput(phoneInput, {
+            initialCountry: "ao",
+            preferredCountries: ["ao"],
+            separateDialCode: true,
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+
         // Função para abrir o modal
         function abrirModal() {
             document.getElementById("modalForm").style.display = "block";
@@ -1111,21 +1165,28 @@
             }
         }
 
+        // Função para validar o telefone
+        function isValidPhone() {
+            return iti.isValidNumber();
+        }
+
         // Função para lidar com o envio do formulário
         function submitForm(event) {
             event.preventDefault();
             
-            // Aqui você pode adicionar a lógica para enviar os dados do formulário
+            if (!isValidPhone()) {
+                alert('Por favor, insira um número de telefone válido');
+                return;
+            }
+
             const formData = new FormData(event.target);
+            formData.append('telefone_completo', iti.getNumber());
             const data = Object.fromEntries(formData);
             
-            // Por enquanto, apenas mostrar um alerta
+            // Por enquanto, apenas mostrar uma mensagem de sucesso
             alert('Obrigado por se inscrever! Em breve você receberá os materiais por email.');
             
-            // Fechar o modal
             fecharModal();
-            
-            // Limpar o formulário
             event.target.reset();
         }
 
