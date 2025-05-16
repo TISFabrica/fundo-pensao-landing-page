@@ -34,6 +34,12 @@
     <link href="css/custom.css" rel="stylesheet" media="screen">
     <!-- Adicionar link para o intl-tel-input CSS e bandeiras -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <!-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfQVj0rAAAAAL341h0gLiaXtnb-6EHhNCqZ2XhL"></script> -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
+    
 </head>
 
 <body>
@@ -108,13 +114,9 @@
             font-size: 32px;
         }
 
-        .modal-form-group {
-            margin-bottom: 25px;
-        }
 
         .modal-form-group label {
             display: block;
-            margin-bottom: 8px;
             color: #333;
             font-weight: 500;
         }
@@ -144,11 +146,11 @@
         }
 
         .modal-form-submit {
-            background: #002B5B;
-            color: #fff;
+            background: var(--gold-highlight-color) !important;
+            color: var(--primary-color) !important;
             padding: 15px 30px;
             border: none;
-            border-radius: 8px;
+            border-radius: 100px !important;
             font-size: 18px;
             cursor: pointer;
             width: 100%;
@@ -158,7 +160,8 @@
         }
 
         .modal-form-submit:hover {
-            background: #001B3B;
+            background-color: var(--primary-color) !important;
+            color: var(--white-color) !important;
         }
 
         .fechar {
@@ -169,10 +172,20 @@
             font-weight: bold;
             color: #333;
             cursor: pointer;
+            background: var(--gold-highlight-color) !important;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
         }
 
         .fechar:hover {
-            color: #007bff;
+            background-color: var(--primary-color) !important;
+            color: var(--white-color) !important;
+            transition: all 0.3s ease;
         }
 
         .checkbox-group {
@@ -205,53 +218,68 @@
             <span class="fechar" onclick="fecharModal()">&times;</span>
             <form id="inscricaoForm" onsubmit="submitForm(event)">
                 <input type="hidden" name="campanha" value="fundo_pensoes">
+                <h5 class="mb-4">Aceder aos conteúdos do Webinar</h5>
+              
                 <div class="modal-form-group">
-                    <input type="text" id="nome" name="nome" placeholder="Nome*" required>
+                  <input type="text" id="nome" name="nome" placeholder="Nome*" required>
                 </div>
-                
+              
                 <div class="modal-form-group">
-                    <input type="text" id="cargo" name="cargo" placeholder="Cargo*" required>
+                  <input type="text" id="cargo" name="cargo" placeholder="Cargo*" required>
                 </div>
-                
+              
                 <div class="modal-form-group">
-                    <input type="text" id="empresa" name="empresa" placeholder="Empresa*" required>
+                  <input type="text" id="empresa" name="empresa" placeholder="Empresa*" required>
                 </div>
-
+              
+                <div class="modal-form-group mb-3">
+                  <select id="tamanho" name="tamanho" required>
+                    <option value="">Tamanho</option>
+                    <option value="micro">Microempresa (1–9)</option>
+                    <option value="pequena">Pequena empresa (10–49)</option>
+                    <option value="media">Média empresa (50–199)</option>
+                    <option value="grande">Grande empresa (200+)</option>
+                  </select>
+                </div>
+              
+                <div class="modal-form-group mb-3">
+                  <input type="text" id="website" name="website" placeholder="Website (Opcional)">
+                  <small id="website-erro" style="color: red; display: none;">
+                    Website inválido. Ex: https://exemplo.com
+                  </small>
+                </div>
+              
                 <div class="modal-form-group">
-                    <select id="tamanho" name="tamanho" required>
-                        <option value="">Tamanho</option>
-                        <option value="micro">Microempresa (1–9)</option>
-                        <option value="pequena">Pequena empresa (10–49)</option>
-                        <option value="media">Média empresa (50–199)</option>
-                        <option value="grande">Grande empresa (200+)</option>
-                    </select>
+                  <input type="email" id="email" name="email" placeholder="E-Mail*" required>
                 </div>
-                
+              
+                <div class="modal-form-group mb-3">
+                  <input type="tel" id="telefone" name="telefone" placeholder="Telefone*" required>
+                  <small id="telefone-erro" style="color: red; display: none;">
+                    Número inválido. Use apenas números, espaço, +, -, ( )
+                  </small>
+                </div>
+              
                 <div class="modal-form-group">
-                    <input type="url" id="website" name="website" placeholder="Website (Opcional)">
+                  <textarea id="informacao" name="informacao" placeholder="Informação (Opcional)"></textarea>
                 </div>
-                
-                <div class="modal-form-group">
-                    <input type="email" id="email" name="email" placeholder="E-Mail*" required>
-                </div>
-                
-                <div class="modal-form-group">
-                    <input type="tel" id="telefone" name="telefone" placeholder="Telefone*" required>
-                </div>
-                
-                <div class="modal-form-group">
-                    <textarea id="informacao" name="informacao" placeholder="Informação (Opcional)"></textarea>
-                </div>
-
+              
                 <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" name="autorizo" required>
-                        Autorizo o recebimento de materiais adicionais e contato da equipe comercial da TIS *
-                    </label>
+                  <label class="d-flex align-items-center">
+                    <input type="checkbox" name="autorizo" required>
+                    Autorizo o recebimento de materiais adicionais e contato da equipe comercial da TIS *
+                  </label>
                 </div>
-
-                <button type="submit" class="modal-form-submit">Confirmar</button>
-            </form>
+               
+                <div class="modal-form-group mb-3">
+                    <div class="g-recaptcha" data-sitekey="6LfUfD0rAAAAAFVa_JKm7gtjXGa4kbcGpDPAd78U"></div>
+                    <small id="captcha-erro" style="color: red; display: none;">
+                        Por favor, confirme que não é um robô.
+                    </small>
+                </div>
+                
+                <button type="submit" class="modal-form-submit btn-default btn">Confirmar</button>
+              </form>
         </div>
     </div>
 
@@ -1133,11 +1161,16 @@
     <script src="js/wow.js"></script>
     <!-- Main Custom js file -->
     <script src="js/function.js"></script>
+    <script src="validate.js"></script>
+    <script src="submit.js"></script>
+    
+    
+
 
     <!-- Adicionar scripts necessários -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
-    <script>
+    <script> 
         // Inicializar o componente de telefone
         const phoneInput = document.querySelector("#telefone");
         const iti = window.intlTelInput(phoneInput, {
@@ -1170,25 +1203,47 @@
             return iti.isValidNumber();
         }
 
-        // Função para lidar com o envio do formulário
-        function submitForm(event) {
-            event.preventDefault();
-            
-            if (!isValidPhone()) {
-                alert('Por favor, insira um número de telefone válido');
-                return;
-            }
 
-            const formData = new FormData(event.target);
-            formData.append('telefone_completo', iti.getNumber());
-            const data = Object.fromEntries(formData);
+        // function onClick(e) {
+        //     e.preventDefault();
+        //     grecaptcha.enterprise.ready(async () => {
+        //     const token = await grecaptcha.enterprise.execute('6LfQVj0rAAAAAL341h0gLiaXtnb-6EHhNCqZ2XhL', {action: 'LOGIN'});
+        //     });
+        // }
+
+        // Função para lidar com o envio do formulário
+        // async function submitForm(event) {
+        //     event.preventDefault();
             
-            // Por enquanto, apenas mostrar uma mensagem de sucesso
-            alert('Obrigado por se inscrever! Em breve você receberá os materiais por email.');
+        //     if (!isValidPhone()) {
+        //         alert('Por favor, insira um número de telefone válido');
+        //         return;
+        //     }
+
+        //     // Verificar reCAPTCHA
+        //     await grecaptcha.enterprise.ready(async () => {
+        //         const token = await grecaptcha.enterprise.execute('6LfQVj0rAAAAAL341h0gLiaXtnb-6EHhNCqZ2XhL', {action: 'LOGIN'});
+        //     });
+        //     const captchaErro = document.getElementById('captcha-erro');
+        //     if (!captchaResponse) {
+        //         captchaErro.style.display = 'block';
+        //         isValid = false;
+        //         return 
+        //     } else {
+        //         captchaErro.style.display = 'none';
+        //         return
+        //     }
+
+        //     const formData = new FormData(event.target);
+        //     formData.append('telefone_completo', iti.getNumber());
+        //     const data = Object.fromEntries(formData);
             
-            fecharModal();
-            event.target.reset();
-        }
+        //     // Por enquanto, apenas mostrar uma mensagem de sucesso
+        //     alert('Obrigado por se inscrever! Em breve você receberá os materiais por email.');
+            
+        //     fecharModal();
+        //     event.target.reset();
+        // }
 
         // Adicionar evento de clique a todos os botões que devem abrir o modal
         document.addEventListener('DOMContentLoaded', function() {
