@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Awaiken">
+    <!-- Page Title -->
+    <title> GOVERNANÇA EM FUNDOS DE PENSÃO</title>
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <!-- Google Fonts Css-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- SlickNav Css -->
+    <link href="css/slicknav.min.css" rel="stylesheet">
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- Font Awesome Icon Css-->
+    <link href="css/all.css" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Magnific Popup Core Css File -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Main Custom Css -->
+    <link href="css/custom.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+    <!-- Header Start -->
+    <header class="main-header">
+        <div class="header-sticky">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <!-- Logo Start -->
+                    <a class="navbar-brand" href="./">
+                        <img src="images/logo-tis-2.png" alt="Logo">
+                    </a>
+                    <!-- Logo End -->
+
+                    <!-- Main Menu Start -->
+                    <div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav mr-auto" id="menu">
+                                <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#solucoes">Soluções</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#formacao">Formação</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#recursos">Recursos</a></li>
+
+
+                                <li class="nav-item"><a class="nav-link" href="#contacto">Contato</a></li>
+                            </ul>
+                        </div>
+                        <!-- Let's Start Button Start -->
+                        <div class="header-btn d-inline-flex">
+                            <a href="#webinar" class="btn-default">Aceda ao conteúdo do WEBINAR</a>
+                        </div>
+                        <!-- Let's Start Button End -->
+                    </div>
+                    <!-- Main Menu End -->
+                    <div class="navbar-toggle"></div>
+                </div>
+            </nav>
+            <div class="responsive-menu"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Modal Form Styles -->
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .modal-content {
+            background: #fff;
+            margin: 5% auto;
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .modal-content h2 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 32px;
+        }
+
+        .modal-form-group {
+            margin-bottom: 25px;
+        }
+
+        .modal-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .modal-form-group input,
+        .modal-form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-form-group input:focus,
+        .modal-form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+        }
+
+        .modal-form-submit {
+            background: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-form-submit:hover {
+            background: #0056b3;
+        }
+
+        .fechar {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .fechar:hover {
+            color: #007bff;
+        }
+    </style>
+
+    <!-- Modal Form -->
+    <div id="modalForm" class="modal">
+        <div class="modal-content">
+            <span class="fechar" onclick="fecharModal()">&times;</span>
+            <h2>Inscreva-se para Aceder aos Conteúdos</h2>
+            <form id="inscricaoForm" onsubmit="submitForm(event)">
+                <div class="modal-form-group">
+                    <label for="nome">Nome Completo*</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="modal-form-group">
+                    <label for="email">Email Profissional*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="modal-form-group">
+                    <label for="empresa">Empresa/Instituição*</label>
+                    <input type="text" id="empresa" name="empresa" required>
+                </div>
+                
+                <div class="modal-form-group">
+                    <label for="cargo">Cargo*</label>
+                    <input type="text" id="cargo" name="cargo" required>
+                </div>
+                
+                <div class="modal-form-group">
+                    <label for="telefone">Telefone*</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+                
+                <div class="modal-form-group">
+                    <label for="setor">Setor de Atuação*</label>
+                    <select id="setor" name="setor" required>
+                        <option value="">Selecione...</option>
+                        <option value="fundo_pensao">Fundo de Pensão</option>
+                        <option value="seguros">Seguros</option>
+                        <option value="banco">Banco</option>
+                        <option value="consultoria">Consultoria</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="modal-form-submit">Inscrever-me</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hero Section Start -->
+    <div class="hero bg-image parallaxie">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <!-- Hero Content Start -->
+                    <div class="hero-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h1 class="text-anime-style-2" data-cursor="-opaque">Transforme a Governança do Seu Fundo de
+                                Pensão</h1>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Tenha acesso ao webinar exclusivo "Governança
+                                e Segurança em Fundos de Pensão" e descubra as melhores práticas para uma gestão segura,
+                                transparente e de alto desempenho</p>
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- Hero Content Body Start -->
+                        <div class="hero-content-body wow fadeInUp" data-wow-delay="0.5s">
+                            <a href="#webinar" class="btn-default">Quero aceder aos conteúdos do WEBINAR</a>
+                        </div>
+                        <!-- Hero Content Body End -->
+                    </div>
+                    <!-- Hero Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Section End -->
+
+    <!-- About Us Section Start -->
+    <div class="about-us">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- About Image Start -->
+                    <div class="about-image">
+                        <div class="about-img-1">
+                            <figure class="image-anime reveal">
+                                <img src="images/webinar-2.jpg" alt="">
+                            </figure>
+                        </div>
+
+                        <div class="about-img-2">
+                            <figure class="image-anime reveal">
+                                <img src="images/webinar-1.jpg" alt="">
+                            </figure>
+                        </div>
+
+                        <!-- About Experience Circle Start -->
+                        <div class="about-experience">
+                            <figure>
+                                <img src="images/about-experience-circle-2.png" alt="">
+                            </figure>
+                        </div>
+                        <!-- About Experience Circle End -->
+                    </div>
+                    <!-- About Image End -->
+                </div>
+
+                <div id="webinar" class="col-lg-6">
+                    <!-- About Content Start -->
+                    <div class="about-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h2 class="text-anime-style-2" data-cursor="-opaque"><span>Webinar Exclusivo:</span>
+                                Governança e Segurança em Fundos de Pensão</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Realizado a 24 de Abril de 2025, este webinar
+                                reuniu especialistas para discutir os principais desafios e soluções para a gestão de
+                                fundos de pensão.</p>
+                            <p>Tópicos abordados:</p>
+
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- About Us Body Start -->
+                        <div class="about-us-body wow fadeInUp" data-wow-delay="0.5s">
+                            <ul>
+                                <li>Palestra 1: Gestão de Fundo de Pensão com Segurança Jurídica</li>
+                                <p>Princípios fundamentais de governança aplicados ao contexto dos fundos de pensão
+                                    angolanos, com foco em transparência e responsabilidade fiduciária.</p>
+                                <li>Palestra 2: Investir com Responsabilidade: Diretrizes para Políticas de
+                                    Investimentos Sustentáveis</li>
+                                <p>Estratégias para implementação de programas de compliance eficazes e metodologias de
+                                    gestão de riscos adaptadas à realidade do mercado angolano.</p>
+                                <li>Palestra 3: Compliance, Transparência e Performance: o Tripé da Boa Governança</li>
+                                <p>Soluções tecnológicas que potencializam a governança, desde sistemas de gestão
+                                    integrada até ferramentas de análise de dados para tomada de decisão.</p>
+                            </ul>
+                        </div>
+                        <!-- About Us Body End -->
+
+                        <!-- About Us Footer Start -->
+                        <div class="about-us-footer wow fadeInUp" data-wow-delay="1s">
+                            <a href="#webinar" class="btn-default">Receber os materiais do Webinar</a>
+                        </div>
+
+
+                        <!-- Modal flutuante -->
+                        <div id="modalForm" class="modal">
+                            <div class="modal-content">
+                                <span class="fechar" onclick="fecharModal()">&times;</span>
+                                <h2>Inscreva-se</h2>
+                                <form>
+                                    <label for="nome">Nome:</label>
+                                    <input type="text" id="nome" name="nome" required>
+
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" required>
+
+                                    <button type="submit">Enviar</button>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                        <!--<div class="about-us-footer wow fadeInUp" data-wow-delay="0.75s">
+                            <a href="#" class="btn-default">Receber os Materiais do Webinar</a>
+                        </div> -->
+                        <!-- About Us Footer End -->
+                    </div>
+                    <!-- About Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Us Section End -->
+    <!-- How It Work Start -->
+    <div class="how-it-work">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-lg-6">
+                    <div class="how-it-work-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h2 class="text-anime-style-2" data-cursor="-opaque"><span>Compliance e Governança de Alto
+                                    Impacto: </span>Formação para Conselheiros e Directores</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Uma formação completa para profissionais que
+                                desejam aprimorar suas competências em governança corporativa aplicada aos Fundos de
+                                Pensão.</p>
+                            <div class="why-choose-content counter-title">
+                                <h3>Informações Pessoais</h3>
+                            </div>
+                            <!-- About Us Body Start -->
+                            <div class="about-us-body wow fadeInUp" data-wow-delay="0.5s">
+                                <ul>
+                                    <li>24 horas de formação online em tempo real</li>
+                                    <li>6 módulos abrangentes, do básico ao avançado</li>
+                                    <li>Estudos de caso práticos e simulações</li>
+                                    <li>Certificado reconhecido pelo sector</li>
+                                    <li>Público Alvo: presidentes, directores executivos, conselheiros, gestores,
+                                        técnicos e representantes que atuam no segmento de Fundos de Pensão.</li>
+                                </ul>
+                            </div>
+                            <!-- About Us Body End -->
+                            <!-- About Us Footer Start -->
+                            <div class="about-us-footer wow fadeInUp" data-wow-delay="0.75s">
+                                <a href="#" class="btn-default">Receber apresentação da formação</a>
+                            </div>
+                            <!-- About Us Footer End -->
+                        </div>
+                        <!-- Section Title End -->
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- How It Work Image Start -->
+                    <div class="how-it-work-img">
+                        <figure class="reveal image-anime">
+                            <img src="images/treinamento-1.jpg" alt="">
+                        </figure>
+                    </div>
+                    <!-- How It Work Image End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Work End -->
+
+    <!-- Why Choose Us Section Start -->
+    <div class="why-choose-us">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">Benefícos da <span>Formação</span></h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.25s">Gestão eficiente e alinhada às boas práticas de
+                            governança de fundos de pensão.</p>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 order-1">
+                    <!-- Why Choose Box Start -->
+                    <div class="why-choose-box-1">
+                        <!-- Why Choose Item Start -->
+                        <div class="why-choose-item wow fadeInUp">
+                            <!-- Icon Box Start -->
+                            <div class="icon-box">
+                                <img src="images/icon-why-us-1.svg" alt="">
+                            </div>
+                            <!-- Icon Box End -->
+
+                            <!-- Why Choose Content Start -->
+                            <div class="why-choose-content">
+                                <h3>Certificação Reconhecida</h3>
+                                <p>Certificado com validade internacional e reconhecimento no mercado angolano.</p>
+                            </div>
+                            <!-- Why Choose Content End -->
+                        </div>
+                        <!-- Why Choose Item End -->
+
+                        <!-- Why Choose Item Start -->
+                        <div class="why-choose-item wow fadeInUp" data-wow-delay="0.25s">
+                            <!-- Icon Box Start -->
+                            <div class="icon-box">
+                                <img src="images/icon-why-us-2.svg" alt="">
+                            </div>
+                            <!-- Icon Box End -->
+
+                            <!-- Why Choose Content Start -->
+                            <div class="why-choose-content">
+                                <h3>Networking Qualificado</h3>
+                                <p>Interação com profissionais de alto nível do setor previdenciário de Angola.</p>
+                            </div>
+                            <!-- Why Choose Content End -->
+                        </div>
+                        <!-- Why Choose Item End -->
+
+                        <!-- Why Choose Item Start -->
+                        <div class="why-choose-item wow fadeInUp" data-wow-delay="0.5s">
+                            <!-- Icon Box Start -->
+                            <div class="icon-box">
+                                <img src="images/icon-why-us-3.svg" alt="">
+                            </div>
+                            <!-- Icon Box End -->
+
+                            <!-- Why Choose Content Start -->
+                            <div class="why-choose-content">
+                                <h3>Ferramentas Práticas</h3>
+                                <p>Acesso a modelos, templates e checklists prontos para implementação imediata.</p>
+                            </div>
+                            <!-- Why Choose Content End -->
+                        </div>
+                        <!-- Why Choose Item End -->
+                    </div>
+                    <!-- Why Choose Box Start -->
+                </div>
+
+                <div class="col-lg-4 order-lg-1 order-md-2 order-1">
+                    <!-- Why Choose Image Start -->
+                    <div class="why-choose-image wow fadeInUp">
+                        <figure>
+                            <img src="images/why-choose-us-img.png" alt="">
+                        </figure>
+                    </div>
+                    <!-- Why Choose Image End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 order-lg-2 order-md-1 order-2">
+                    <!-- Why Choose Box Start -->
+                    <div class="why-choose-box-2">
+                        <!-- Why Choose Item Start -->
+                        <div class="why-choose-item wow fadeInUp">
+                            <!-- Icon Box Start -->
+                            <div class="icon-box">
+                                <img src="images/icon-why-us-4.svg" alt="">
+                            </div>
+                            <!-- Icon Box End -->
+
+                        </div>
+                        <!-- Why Choose Item End -->
+
+                        <!-- Why Choose Item Start -->
+                        <div class="why-choose-item wow fadeInUp" data-wow-delay="0.25s">
+                            <!-- Icon Box Start -->
+                            <div class="icon-box">
+                                <img src="images/icon-why-us-5.svg" alt="">
+                            </div>
+                            <!-- Icon Box End -->
+
+                            <!-- Why Choose Content Start -->
+                            <div class="why-choose-content">
+                                <h3>Material Completo</h3>
+                                <p>Acesso vitalício a todos os materiais, atualizações e gravações das aulas.</p>
+                            </div>
+                            <!-- Why Choose Content End -->
+                        </div>
+                        <!-- Why Choose Item End -->
+
+                        <!-- Why Choose Item Start -->
+                        <div class="why-choose-item wow fadeInUp" data-wow-delay="0.5s">
+                            <!-- Icon Box Start -->
+                            <div class="icon-box">
+                                <img src="images/icon-why-us-6.svg" alt="">
+                            </div>
+                            <!-- Icon Box End -->
+
+                            <!-- Why Choose Content Start -->
+                            <div class="why-choose-content">
+                                <h3>Projeto Final Aplicado</h3>
+                                <p>Desenvolvimento de projeto prático aplicado à realidade da sua instituição.</p>
+                            </div>
+                            <!-- Why Choose Content End -->
+                        </div>
+                        <!-- Why Choose Item End -->
+                    </div>
+                    <!-- Why Choose Box Start -->
+                </div>
+            </div>
+        </div>
+        <!-- Icon Start Image Start -->
+        <div class="icon-star-image">
+            <img src="images/icon-star.svg" alt="">
+        </div>
+        <!-- Icon Start Image End -->
+    </div>
+    <!-- Why Choose Us Section End -->
+
+
+    <!-- Our Serviceds Section Start -->
+    <div class="our-services">
+        <!-- Expertise Experience Section Start -->
+        <div class="expertise-experience">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <!-- Expertise Experience Content Start -->
+                        <div class="expertise-experience-content">
+                            <!-- Section Title Start -->
+                            <div class="section-title">
+                                <h2 class="text-anime-style-2" data-cursor="-opaque">Sobre o Palestrante <span>Raphael
+                                        Oliveira</span></h2>
+                                <p class="wow fadeInUp" data-wow-delay="0.25s">Economista com vasta experiência no
+                                    sector de fundos de pensão. Ex-Diretor de Investimentos com gestão de patrimônio de
+                                    U$1 bilhão. Professor universitário especializado em Previdência Complementar.
+                                    Certificações profissionais reconhecidas internacionalmente. Autor e palestrante
+                                    internacional.</p>
+
+                            </div>
+                            <!-- Section Title End -->
+                            <div class="why-choose-content counter-title">
+                                <h3>Informações Pessoais</h3>
+                            </div>
+                            <div class="about-us-body wow fadeInUp" data-wow-delay="0.5s">
+                                <ul>
+                                    <li>Economista graduado pela Universidade Estadual do Rio de Janeiro</li>
+                                    <li>MBA em Controladoria e Finanças pela Universidade Federal Fluminense do Rio de
+                                        Janeiro</li>
+                                    <li>Pós-Graduado em Previdência Complementar pela PUC – Pontifícia Universidade
+                                        Católica do Rio de Janeiro</li>
+                                    <li>MBA em Finanças com foco em Gestão de Investimentos pela FGV – Fundação Getúlio
+                                        Vargas do Rio de Janeiro</li>
+                                    <li>Sócio fundador da ROFX Partners, consultoria brasileira especializada em
+                                        Governança, Atuária e Investimentos para Fundos de Pensão</li>
+                                </ul>
+                            </div>
+                            <!-- About Us Body End -->
+
+                        </div>
+                        <!-- Expertise Experience Content End -->
+                    </div>
+
+                    <div class="col-lg-6">
+                        <!-- Expertise Experience Image Start -->
+                        <div class="expertise-experience-img">
+                            <figure class="image-anime reveal">
+                                <img src="images/apresentador.jpg" alt="">
+                            </figure>
+                        </div>
+                        <!-- Expertise Experience Image End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Expertise Experience Section End -->
+
+        <!-- Icon Start Image Start -->
+        <div class="icon-star-image">
+            <img src="images/icon-star.svg" alt="">
+        </div>
+        <!-- Icon Start Image End -->
+    </div>
+    <!-- Our Serviceds Section End -->
+
+    <!-- About Member Details Start -->
+    <div class="about-member-details">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <!-- Expertise Experience Content Start -->
+                        <div class="expertise-experience-content">
+                            <div class="why-choose-content counter-title">
+                                <h3>Já Atuou Como:</h3>
+                            </div>
+                            <div class="about-us-body wow fadeInUp" data-wow-delay="0.5s">
+                                <ul>
+                                    <li>Diretor de Investimentos de Fundo de Pensão (responsável máximo pelos
+                                        investimentos), cujo patrimônio atual é de aproximadamente U$S 1 bilhão</li>
+                                    <li>Membro titular do Conselho Fiscal da ABRAPP - Associação Brasileira das
+                                        Entidades Fechadas de Previdência Complementar</li>
+                                    <li>Professor da Pós-Graduação em Gestão de Previdência Complementar - IDEAS / COPPE
+                                        UFRJ – Universidade Federal do Rio de Janeiro, ministrando as disciplinas
+                                        Controles Internos, Compliance e Auditoria e Governança Corporativa</li>
+                                    <li>Coautor do livro "Brasil em Números – 2008" publicado pelo IBGE - Instituto
+                                        Brasileiro de Geografia e Estatística no ano de 2009</li>
+                                </ul>
+                            </div>
+                            <!-- About Us Body End -->
+                        </div>
+                        <!-- Expertise Experience Content End -->
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Expertise Experience Content Start -->
+                        <div class="expertise-experience-content">
+                            <div class="why-choose-content counter-title">
+                                <h3>Certificações:</h3>
+                            </div>
+                            <div class="about-us-body wow fadeInUp" data-wow-delay="0.5s">
+                                <ul>
+                                    <li>Certificado CPA-20 - Certificação Profissional ANBIMA Série 20</li>
+                                    <li>Certificado de Agente Autônomo de Investimentos e Empregados das Instituições
+                                        Financeiras – Certificadora: ANCORD - Associação Nacional das Corretoras e
+                                        Distribuidoras de Títulos e Valores Mobiliários, Câmbio e Mercadorias</li>
+                                    <li>Certificado de Gestor de Regime Previdência Fechada - Investimentos - CGRPF-I –
+                                        Certificadora: APIMEC Brasil - Associação dos Analistas e Profissionais de
+                                        Investimento do Mercado de Capitais</li>
+                                    <li>Certificado com Ênfase em Investimentos – Certificadora: ICSS - Instituto de
+                                        Certificação Institucional e dos Profissionais de Seguridade Socialo</li>
+                                </ul>
+                            </div>
+                            <!-- About Us Body End -->
+                        </div>
+                        <!-- Expertise Experience Content End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Member Details End -->
+
+    <!-- Our Serviceds Section Start -->
+    <div class="why-choose-us">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h2 class="text-anime-style-2" data-cursor="-opaque"><span>Soluções Integradas </span>para
+                            Fundos de Pensão</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.25s">Tecnologia de ponta para modernização e
+                            eficiência operacional</p>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6">
+                    <!-- Service Item Start -->
+                    <div class="service-item wow fadeInUp">
+                        <div class="icon-box">
+                            <div class="img">
+                                <img src="images/icon-services-1.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <h3>TIS Benefícios</h3>
+                            <p>Plataforma para gestão completa de beneficiários, desde cadastro até pagamento de
+                                benefícios.</p>
+                            <div class="about-us-body wow fadeInUp" data-wow-delay="0.5s">
+                                <ul>
+                                    <li>Cadastro biométrico e validação de documentos</li>
+                                    <li>Dashboards interativos e personalizáveis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item End -->
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <!-- Service Item Start -->
+                    <div class="service-item wow fadeInUp">
+                        <div class="icon-box">
+                            <div class="img">
+                                <img src="images/icon-services-1.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <h3>TIS Invest</h3>
+                            <p>Plataforma completa para gestão de investimentos com monitoramento em tempo real e
+                                análise de cenários.</p>
+                            <div class="about-us-body wow fadeInUp" data-wow-delay="0.5s">
+                                <ul>
+                                    <li>Dashboard personalizado com indicadores-chave</li>
+                                    <li>Controle de limites de alocação e compliance</li>
+                                    <li>Relatórios automatizados para órgãos reguladores</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item End -->
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <!-- Service Item Start -->
+                    <div class="service-item wow fadeInUp">
+                        <div class="icon-box">
+                            <div class="img">
+                                <img src="images/icon-services-1.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <h3>TIS Compliance</h3>
+                            <p>Sistema integrado para gestão de compliance, controles internos e governança corporativa.
+                            </p>
+                            <div class="about-us-body wow fadeInUp" data-wow-delay="0.5s">
+                                <ul>
+                                    <li>Dashboard personalizado com indicadores-chave</li>
+                                    <li>Controle de limites de alocação e compliance</li>
+                                    <li>Relatórios automatizados para órgãos reguladores</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item End -->
+                </div>
+
+
+                <div class="col-lg-6 col-md-6">
+                    <!-- Service Item Start -->
+                    <div class="service-item wow fadeInUp">
+                        <div class="icon-box">
+                            <div class="img">
+                                <img src="images/icon-services-1.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <h3>TIS Docs</h3>
+                            <p>Sistema de gestão documental com assinatura digital e fluxos de aprovação automatizados.
+                            </p>
+                            <div class="about-us-body wow fadeInUp" data-wow-delay="0.5s">
+                                <ul>
+                                    <li>Repositório seguro com controle de versões</li>
+                                    <li>Desmaterialização dos processos</li>
+                                    <li>Integração com sistemas de governança</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item End -->
+                </div>
+
+                <div class="col-lg-12">
+                    <!-- Service Box Footer Start -->
+                    <div class="services-box-footer wow fadeInUp" data-wow-delay="1s">
+                        <p>Explore nossas soluções integradas para o fortalecimento da governança dos fundos de pensão.
+                        </p>
+                        <a href="#" class="btn-default">Conheça nossas soluções completas</a>
+                    </div>
+                    <!-- Service Box Footer End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Serviceds Section End -->
+
+    <!-- How It Work Start -->
+    <div class="our-services">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- How It Work Image Start -->
+                    <div class="how-it-work-img">
+                        <figure class="reveal image-anime">
+                            <img src="images/tis-fabrica.jpg" alt="">
+                        </figure>
+                    </div>
+                    <!-- How It Work Image End -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="how-it-work-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">Conheça um Pouco <span>Sobre a
+                                    TIS</span></h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">A TIS é uma empresa líder em soluções
+                                tecnológicas para o setor previdenciário em Angola, com mais de 15 anos de experiência
+                                no desenvolvimento de sistemas e consultoria especializada para fundos de pensão.</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.5s">Nossa missão é modernizar e fortalecer o setor
+                                previdenciário angolano através de tecnologia de ponta e conhecimento especializado,
+                                contribuindo para a segurança e sustentabilidade dos fundos de pensão.</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.75s">Com uma equipe multidisciplinar de
+                                especialistas em tecnologia, governança e previdência, oferecemos soluções integradas
+                                que combinam software, consultoria e capacitação para atender às necessidades
+                                específicas de cada instituição.</p>
+                            <p class="wow fadeInUp" data-wow-delay="1s">Atualmente, atendemos mais de 30 fundos de
+                                pensão em Angola, incluindo os principais fundos corporativos e setoriais do país,
+                                impactando positivamente a gestão de recursos previdenciários de mais de 500 mil
+                                beneficiários.</p>
+                        </div>
+                        <!-- Section Title End -->
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="how-it-work-content">
+
+                        <!-- How Work Accordion Start -->
+
+                        <!-- FAQ Accordion Start -->
+                        <div>
+                            <!-- FAQ Item Start -->
+                            <div class="wow fadeInUp">
+                                <div class="icon-box">
+                                    <img src="images/icon-how-it-work-1.svg" alt="">
+                                </div>
+                                <h3>Expertise Local</h3>
+                                <div class="accordion-body">
+                                    <p>Conhecimento profundo do mercado angolano</p>
+                                </div>
+                            </div>
+                            <!-- FAQ Item End -->
+
+                            <!-- FAQ Item Start -->
+                            <div class="wow fadeInUp">
+                                <div class="icon-box">
+                                    <img src="images/icon-how-it-work-1.svg" alt="">
+                                </div>
+                                <h3>Tecnologia Avançada</h3>
+                                <div class="accordion-body">
+                                    <p>Soluções baseadas em IA e cloud computing</p>
+                                </div>
+                            </div>
+                            <!-- FAQ Item End -->
+                        </div>
+                        <!-- FAQ Accordion End -->
+                        <!-- How Work Accordion End -->
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="how-it-work-content">
+
+                        <!-- How Work Accordion Start -->
+
+                        <!-- FAQ Accordion Start -->
+                        <div>
+                            <!-- FAQ Item Start -->
+                            <div class="wow fadeInUp">
+                                <div class="icon-box">
+                                    <img src="images/icon-how-it-work-1.svg" alt="">
+                                </div>
+                                <h3>Suporte Contínuo</h3>
+                                <div class="accordion-body">
+                                    <p>Equipa local disponível 24/7</p>
+                                </div>
+                            </div>
+                            <!-- FAQ Item End -->
+
+                            <!-- FAQ Item Start -->
+                            <div class="wow fadeInUp">
+                                <div class="icon-box">
+                                    <img src="images/icon-how-it-work-1.svg" alt="">
+                                </div>
+                                <h3>Conformidade Regulatória</h3>
+                                <div class="accordion-body">
+                                    <p>Atualização constante com a legislação</p>
+                                </div>
+                            </div>
+                            <!-- FAQ Item End -->
+                        </div>
+                        <!-- FAQ Accordion End -->
+                        <!-- How Work Accordion End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- How It Work End -->
+
+    <!-- Our Counter Section Start -->
+    <div class="why-choose-us">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">Nossa Presença em <span>Angola</span></h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.25s">Com sede em Luanda e escritórios em Benguela e
+                            Huambo, a TIS está estrategicamente posicionada para atender todo o território angolano com
+                            rapidez e eficiência.</p>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <!-- Counter Item Start -->
+                    <div class="counter-item">
+                        <!-- Counter Title Start -->
+                        <div class="counter-title">
+                            <h2><span class="counter">13</span>+</h2>
+                            <h3>Anos de Experiência</h3>
+                        </div>
+                        <!-- Counter Title End -->
+                    </div>
+                    <!-- Counter Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Counter Item Start -->
+                    <div class="counter-item">
+                        <!-- Counter Title Start -->
+                        <div class="counter-title">
+                            <h2><span class="counter">300</span>+</h2>
+                            <h3>Projectos Realizados</h3>
+                        </div>
+                        <!-- Counter Title End -->
+                    </div>
+                    <!-- Counter Item End -->
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Counter Item Start -->
+                    <div class="counter-item">
+                        <!-- Counter Title Start -->
+                        <div class="counter-title">
+                            <h2><span class="counter">100</span>+</h2>
+                            <h3>Clientes satisfeitos</h3>
+                        </div>
+                        <!-- Counter Title End -->
+                    </div>
+                    <!-- Counter Item End -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Our Counter Section End -->
+
+    <!-- Icon Start Image Start -->
+    <div class="icon-star-image">
+        <img src="images/icon-star.svg" alt="">
+    </div>
+    <!-- Icon Start Image End -->
+
+    <!-- Footer Start -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- About Footer Start -->
+                    <div class="about-footer">
+                        <!-- Footer Logo Start -->
+                        <div class="footer-logo">
+                            <img src="images/logo-tis.svg" alt="">
+                        </div>
+                        <!-- Footer Logo End -->
+
+                        <!-- About Footer Content Start -->
+                        <div class="about-footer-content">
+                            <p>Soluções tecnológicas e formação especializada para o setor previdenciário em Angola.</p>
+                        </div>
+                        <!-- About Footer Content End -->
+                    </div>
+                    <!-- About Footer End -->
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <!-- Footer Quick Links Start -->
+                    <div class="footer-links footer-quick-links">
+                        <h3>Links Rápidos</h3>
+                        <ul>
+                            <li><a href="#">Início</a></li>
+                            <li><a href="#">Soluções</a></li>
+                            <li><a href="#">Formação</a></li>
+                            <li><a href="#">Recurso</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <!-- Footer Quick Links End -->
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <!-- Footer Social Links Start -->
+                    <div class="footer-links footer-social-links">
+                        <h3>Mídias Sociais</h3>
+                        <ul>
+                            <li><a href="#">facebook</a></li>
+                            <li><a href="#">instagram</a></li>
+                            <li><a href="#">youtube</a></li>
+                            <li><a href="#">twitter</a></li>
+                        </ul>
+                    </div>
+                    <!-- Footer Social Links End -->
+                </div>
+
+                <div class="col-lg-2 col-md-4">
+                    <!-- Footer Contact Links Start -->
+                    <div class="footer-links footer-contact-links">
+                        <h3>Contatos</h3>
+                        <ul>
+                            <li><a href="#">Rua Comandante Gika, Edifício Garden Towers, Torre B, 11º andar, Luanda,
+                                    Angola</a></li>
+                            <li><a href="#">info@tis.ao</a></li>
+                            <li><a href="#">+244 923 456 789</a></li>
+                            <li><a href="#">Segunda a Sexta: 8h às 17h</a></li>
+                        </ul>
+                    </div>
+                    <!-- Footer Contact Links End -->
+                </div>
+            </div>
+
+            <!-- Footer Copyright Section Start -->
+            <div class="footer-copyright">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Footer Copyright Start -->
+                        <div class="footer-copyright-text">
+                            <p>Copyright © 2025. Todos os direitos reservados a TIS.</p>
+                        </div>
+                        <!-- Footer Copyright End -->
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Copyright Section End -->
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Jquery Library File -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap js file -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Validator js file -->
+    <script src="js/validator.min.js"></script>
+    <!-- SlickNav js file -->
+    <script src="js/jquery.slicknav.js"></script>
+    <!-- Swiper js file -->
+    <script src="js/swiper-bundle.min.js"></script>
+    <!-- Counter js file -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Magnific js file -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- SmoothScroll -->
+    <script src="js/SmoothScroll.js"></script>
+    <!-- Parallax js -->
+    <script src="js/parallaxie.js"></script>
+    <!-- MagicCursor js file -->
+    <script src="js/gsap.min.js"></script>
+    <script src="js/magiccursor.js"></script>
+    <!-- Text Effect js file -->
+    <script src="js/SplitText.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <!-- YTPlayer js File -->
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <!-- Wow js file -->
+    <script src="js/wow.js"></script>
+    <!-- Main Custom js file -->
+    <script src="js/function.js"></script>
+
+    <script>
+        // Função para abrir o modal
+        function abrirModal() {
+            document.getElementById("modalForm").style.display = "block";
+        }
+
+        // Função para fechar o modal
+        function fecharModal() {
+            document.getElementById("modalForm").style.display = "none";
+        }
+
+        // Fechar o modal quando clicar fora dele
+        window.onclick = function(event) {
+            const modal = document.getElementById("modalForm");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Função para lidar com o envio do formulário
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // Aqui você pode adicionar a lógica para enviar os dados do formulário
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Por enquanto, apenas mostrar um alerta
+            alert('Obrigado por se inscrever! Em breve você receberá os materiais por email.');
+            
+            // Fechar o modal
+            fecharModal();
+            
+            // Limpar o formulário
+            event.target.reset();
+        }
+
+        // Adicionar evento de clique a todos os botões que devem abrir o modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const botoes = document.querySelectorAll('a[href="#webinar"]');
+            botoes.forEach(botao => {
+                botao.onclick = function(e) {
+                    e.preventDefault();
+                    abrirModal();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
