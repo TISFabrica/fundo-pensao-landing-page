@@ -258,7 +258,7 @@
                 </div>
 
                 <div class="modal-form-group mb-3">
-                    <input type="tel" id="telefone" name="telefone" placeholder="Telefone*" required>
+                    <input type="tel" id="telefone" name="telefone"  required>
                     <small id="telefone-erro" style="color: red; display: none;">
                         Número inválido. Use apenas números, espaço, +, -, ( )
                     </small>
@@ -1183,6 +1183,7 @@
 
     <script>
         // Inicializar o componente de telefone
+        
         const phoneInput = document.querySelector("#telefone");
         const iti = window.intlTelInput(phoneInput, {
             initialCountry: "ao",
