@@ -19,35 +19,20 @@ async function submitForm(event) {
   const buttonText = button.querySelector(".button-text");
   const spinner = button.querySelector(".spinner-grow");
 
-  // Desativar botão e mostrar loading
-  button.disabled = true; // ou button.setAttribute("disabled", "true");
-  buttonText.classList.add("d-none"); // Esconder texto
-  spinner.classList.remove("d-none"); // Mostrar spinner
+  disabledButton(button, buttonText, spinner);
 
   // Verificar reCAPTCHA
-  //   let token;
-  //   try {
-  //     token = await grecaptcha.execute(
-  //       "6LfQVj0rAAAAAL341h0gLiaXtnb-6EHhNCqZ2XhL",
-  //       { action: "submit" }
-  //     );
-  //   } catch (error) {
-  //     alert("Erro ao verificar reCAPTCHA. Tente novamente.");
-  //     return;
-  //   }
+  const captchaResponse = grecaptcha.getResponse();
+  const captchaErro = document.getElementById("captcha-erro");
+  if (!captchaResponse) {
+    captchaErro.style.display = "block";
+    enableButton(button, buttonText, spinner);
+    return;
+  } else {
+    captchaErro.style.display = "none";
+    disabledButton(button, buttonText, spinner);
+  }
 
-  //   const captchaErro = document.getElementById("captcha-erro");
-  //   if (!token) {
-  //     captchaErro.style.display = "block";
-  //     return;
-  //   } else {
-  //     captchaErro.style.display = "none";
-  //   }
-
-  //   const formData = new FormData(event.target);
-  //   formData.append("g-recaptcha-response", token); // Append the reCAPTCHA token
-  //   formData.append("telefone_completo", iti.getNumber());
-  //      const data = Object.fromEntries(formData);
   const formData = {
     nome: document.getElementById("nome").value,
     cargo: document.getElementById("cargo").value,
@@ -74,9 +59,7 @@ async function submitForm(event) {
         body: JSON.stringify(formData),
       }
     );
-    button.disabled = false;
-    buttonText.classList.remove("d-none");
-    spinner.classList.add("d-none");
+    enableButton(button, buttonText, spinner);
     Swal.fire({
       position: "center",
       icon: "success",
@@ -88,9 +71,7 @@ async function submitForm(event) {
     event.target.reset();
     // event.target.reset();
   } catch (error) {
-    button.disabled = false;
-    buttonText.classList.remove("d-none");
-    spinner.classList.add("d-none");
+    enableButton(button, buttonText, spinner);
     Swal.fire({
       position: "center",
       icon: "error",
@@ -99,4 +80,16 @@ async function submitForm(event) {
       timer: 2000,
     });
   }
+}
+
+function disabledButton(button, buttonText, spinner) {
+  button.disabled = true;
+  buttonText.classList.add("d-none");
+  spinner.classList.remove("d-none");
+}
+
+function enableButton(button, buttonText, spinner) {
+  button.disabled = false;
+  buttonText.classList.remove("d-none");
+  spinner.classList.add("d-none");
 }

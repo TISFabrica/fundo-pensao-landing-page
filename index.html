@@ -37,10 +37,10 @@
     <link href="
     https://cdn.jsdelivr.net/npm/sweetalert2@11.21.1/dist/sweetalert2.min.css
     " rel="stylesheet">
-    <!-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfQVj0rAAAAAL341h0gLiaXtnb-6EHhNCqZ2XhL"></script> -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
     </script>
 
 </head>
@@ -258,7 +258,7 @@
                 </div>
 
                 <div class="modal-form-group mb-3">
-                    <input type="tel" id="telefone" name="telefone" placeholder="Telefone*" required>
+                    <input type="tel" id="telefone" name="telefone"  required>
                     <small id="telefone-erro" style="color: red; display: none;">
                         Número inválido. Use apenas números, espaço, +, -, ( )
                     </small>
@@ -275,12 +275,12 @@
                     </label>
                 </div>
 
-                <!-- <div class="modal-form-group mb-3">
-                    <div class="g-recaptcha" data-sitekey="6LfUfD0rAAAAAFVa_JKm7gtjXGa4kbcGpDPAd78U"></div>
+                <div class="modal-form-group mb-3">
+                    <div class="g-recaptcha" data-sitekey="6LePBj4rAAAAAOOSxgcSlBIVZnCfgXpz8w298Vhz"></div>
                     <small id="captcha-erro" style="color: red; display: none;">
                         Por favor, confirme que não é um robô.
                     </small>
-                </div> -->
+                </div>
 
                 <button type="submit" class="modal-form-submit btn-default btn">
                     <span class="button-text">Confirmar</span>
@@ -1183,6 +1183,7 @@
 
     <script>
         // Inicializar o componente de telefone
+        
         const phoneInput = document.querySelector("#telefone");
         const iti = window.intlTelInput(phoneInput, {
             initialCountry: "ao",
