@@ -34,12 +34,15 @@
     <link href="css/custom.css" rel="stylesheet" media="screen">
     <!-- Adicionar link para o intl-tel-input CSS e bandeiras -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <link href="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.21.1/dist/sweetalert2.min.css
+    " rel="stylesheet">
     <!-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfQVj0rAAAAAL341h0gLiaXtnb-6EHhNCqZ2XhL"></script> -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+
     </script>
-    
+
 </head>
 
 <body>
@@ -93,7 +96,7 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0, 0, 0, 0.7);
         }
 
         .modal-content {
@@ -104,7 +107,7 @@
             max-width: 600px;
             border-radius: 15px;
             position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .modal-content h2 {
@@ -142,7 +145,7 @@
         .modal-form-group textarea:focus {
             border-color: #007bff;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
         }
 
         .modal-form-submit {
@@ -220,68 +223,71 @@
             <form id="inscricaoForm" onsubmit="submitForm(event)">
                 <input type="hidden" name="campanha" value="fundo_pensoes">
                 <h5 class="mb-4">Aceder aos conteúdos do Webinar</h5>
-              
+
                 <div class="modal-form-group">
-                  <input type="text" id="nome" name="nome" placeholder="Nome*" required>
+                    <input type="text" id="nome" name="nome" placeholder="Nome*" required>
                 </div>
-              
+
                 <div class="modal-form-group">
-                  <input type="text" id="cargo" name="cargo" placeholder="Cargo*" required>
+                    <input type="text" id="cargo" name="cargo" placeholder="Cargo*" required>
                 </div>
-              
+
                 <div class="modal-form-group">
-                  <input type="text" id="empresa" name="empresa" placeholder="Empresa*" required>
+                    <input type="text" id="empresa" name="empresa" placeholder="Empresa*" required>
                 </div>
-              
+
                 <div class="modal-form-group mb-3">
-                  <select id="tamanho" name="tamanho" required>
-                    <option value="">Tamanho</option>
-                    <option value="micro">Microempresa (1–9)</option>
-                    <option value="pequena">Pequena empresa (10–49)</option>
-                    <option value="media">Média empresa (50–199)</option>
-                    <option value="grande">Grande empresa (200+)</option>
-                  </select>
+                    <select id="tamanho" name="tamanho" required>
+                        <option value="">Tamanho</option>
+                        <option value="micro">Microempresa (1–9)</option>
+                        <option value="pequena">Pequena empresa (10–49)</option>
+                        <option value="media">Média empresa (50–199)</option>
+                        <option value="grande">Grande empresa (200+)</option>
+                    </select>
                 </div>
-              
+
                 <div class="modal-form-group mb-3">
-                  <input type="text" id="website" name="website" placeholder="Website (Opcional)">
-                  <small id="website-erro" style="color: red; display: none;">
-                    Website inválido. Ex: https://exemplo.com
-                  </small>
+                    <input type="text" id="website" name="website" placeholder="Website (Opcional)">
+                    <small id="website-erro" style="color: red; display: none;">
+                        Website inválido. Ex: https://exemplo.com
+                    </small>
                 </div>
-              
+
                 <div class="modal-form-group">
-                  <input type="email" id="email" name="email" placeholder="E-Mail*" required>
+                    <input type="email" id="email" name="email" placeholder="E-Mail*" required>
                 </div>
-              
+
                 <div class="modal-form-group mb-3">
-                  <input type="tel" id="telefone" name="telefone" placeholder="Telefone*" required>
-                  <small id="telefone-erro" style="color: red; display: none;">
-                    Número inválido. Use apenas números, espaço, +, -, ( )
-                  </small>
+                    <input type="tel" id="telefone" name="telefone" placeholder="Telefone*" required>
+                    <small id="telefone-erro" style="color: red; display: none;">
+                        Número inválido. Use apenas números, espaço, +, -, ( )
+                    </small>
                 </div>
-              
+
                 <div class="modal-form-group">
-                  <textarea id="informacao" name="informacao" placeholder="Informação (Opcional)"></textarea>
+                    <textarea id="informacao" name="informacao" placeholder="Informação (Opcional)"></textarea>
                 </div>
-              
+
                 <div class="checkbox-group">
-                  <label class="d-flex align-items-center">
-                    <input type="checkbox" name="autorizo" required>
-                    Autorizo o recebimento de materiais adicionais e contato da equipe comercial da TIS *
-                  </label>
+                    <label class="d-flex align-items-center">
+                        <input type="checkbox" name="autorizo" required>
+                        Autorizo o recebimento de materiais adicionais e contato da equipe comercial da TIS *
+                    </label>
                 </div>
-               
+
                 <!-- <div class="modal-form-group mb-3">
                     <div class="g-recaptcha" data-sitekey="6LfUfD0rAAAAAFVa_JKm7gtjXGa4kbcGpDPAd78U"></div>
                     <small id="captcha-erro" style="color: red; display: none;">
                         Por favor, confirme que não é um robô.
                     </small>
                 </div> -->
-                
-                <button type="submit" class="modal-form-submit btn-default btn">Confirmar
-                    <div class="loading-spinner"></div></button>
-              </form>
+
+                <button type="submit" class="modal-form-submit btn-default btn">
+                    <span class="button-text">Confirmar</span>
+                    <span class="spinner-grow spinner-grow-sm d-none" aria-hidden="true"></span>
+                    <span class="visually-hidden" role="status">Loading...</span>
+                </button>
+            </form>
         </div>
     </div>
 
@@ -1165,14 +1171,17 @@
     <script src="js/function.js"></script>
     <script src="validate.js"></script>
     <script src="submit.js"></script>
-    
-    
+    <script src="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.21.1/dist/sweetalert2.all.min.js
+    "></script>
+
+
 
 
     <!-- Adicionar scripts necessários -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
-    <script> 
+    <script>
         // Inicializar o componente de telefone
         const phoneInput = document.querySelector("#telefone");
         const iti = window.intlTelInput(phoneInput, {
@@ -1193,7 +1202,7 @@
         }
 
         // Fechar o modal quando clicar fora dele
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             const modal = document.getElementById("modalForm");
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -1216,7 +1225,7 @@
         // Função para lidar com o envio do formulário
         // async function submitForm(event) {
         //     event.preventDefault();
-            
+
         //     if (!isValidPhone()) {
         //         alert('Por favor, insira um número de telefone válido');
         //         return;
@@ -1239,19 +1248,19 @@
         //     const formData = new FormData(event.target);
         //     formData.append('telefone_completo', iti.getNumber());
         //     const data = Object.fromEntries(formData);
-            
+
         //     // Por enquanto, apenas mostrar uma mensagem de sucesso
         //     alert('Obrigado por se inscrever! Em breve você receberá os materiais por email.');
-            
+
         //     fecharModal();
         //     event.target.reset();
         // }
 
         // Adicionar evento de clique a todos os botões que devem abrir o modal
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const botoes = document.querySelectorAll('a[href="#webinar"]');
             botoes.forEach(botao => {
-                botao.onclick = function(e) {
+                botao.onclick = function (e) {
                     e.preventDefault();
                     abrirModal();
                 }
