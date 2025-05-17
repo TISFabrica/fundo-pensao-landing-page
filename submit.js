@@ -14,8 +14,16 @@ function refreshCaptcha() {
 async function submitForm(event) {
   event.preventDefault();
 
-  //   const button = event.target.querySelector("button");
-  //   button.classList.add("loading");
+  const form = event.target;
+  const button = form.querySelector("button");
+  const buttonText = button.querySelector(".button-text");
+  const spinner = button.querySelector(".spinner-grow");
+
+  // Desativar botão e mostrar loading
+  button.disabled = true; // ou button.setAttribute("disabled", "true");
+  buttonText.classList.add("d-none"); // Esconder texto
+  spinner.classList.remove("d-none"); // Mostrar spinner
+
   // Verificar reCAPTCHA
   //   let token;
   //   try {
@@ -66,21 +74,29 @@ async function submitForm(event) {
         body: JSON.stringify(formData),
       }
     );
-
-    alert(
-      "Obrigado por se inscrever! Em breve você receberá os materiais por email."
-    );
+    button.disabled = false;
+    buttonText.classList.remove("d-none");
+    spinner.classList.add("d-none");
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      text: "Obrigado por se inscrever! Em breve você receberá os materiais por email.",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+    fecharModal();
     event.target.reset();
+    // event.target.reset();
   } catch (error) {
-    alert("Erro ao processar sua inscrição: " + error.message);
+    button.disabled = false;
+    buttonText.classList.remove("d-none");
+    spinner.classList.add("d-none");
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      text: "Erro ao processar sua inscrição: " + error.message,
+      showConfirmButton: false,
+      timer: 2000,
+    });
   }
-  //   finally {
-  //     // Remover loading independentemente do resultado
-  //     button.classList.remove("loading");
-  //   }
-  alert(
-    "Obrigado por se inscrever! Em breve você receberá os materiais por email."
-  );
-  fecharModal();
-  event.target.reset();
 }
