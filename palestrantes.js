@@ -18,6 +18,13 @@ async function downloadFile(url, fileName) {
     });
 
     if (!response.ok) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        text: "Falha ao baixar o arquivo, tente novamente ou verifique o seu acesso",
+        showConfirmButton: false,
+        timer: 2000,
+      });
       throw new Error("Falha ao baixar o arquivo. Verifique o token ou a URL.");
     }
 
@@ -33,14 +40,17 @@ async function downloadFile(url, fileName) {
     document.body.removeChild(link);
     window.URL.revokeObjectURL(link.href); // Libera o objeto URL
   } catch (error) {
-    console.error("Erro ao baixar o arquivo:", error);
-    alert("Erro ao baixar o arquivo. Tente novamente.");
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      text: "Falha ao baixar o arquivo, tente novamente ou verifique o seu acesso",
+      showConfirmButton: false,
+      timer: 2000,
+    });
   }
 }
 
 async function fetchPalestras() {
-  console.log("getToken", getTokenFromUrl());
-
   const container = document.getElementById("palestras-container");
   const errorMessage = document.getElementById("errorMessage");
 
