@@ -2,6 +2,33 @@ function getTokenFromUrl() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get("token");
 }
+function validarRetorno(data) {
+  // Verifica se o retorno é um array e não está vazio
+  if (!Array.isArray(data) || data.length === 0) {
+    return {
+      isValid: false,
+      erro: "Retorno inválido: deve ser um array não vazio",
+    };
+  }
+
+  // Verifica cada objeto no array
+  for (const item of data) {
+    // Lista de campos esperados
+    const campos = ["nome", "descricao", "autor", "foto", "link_download"];
+
+    // Verifica se todos os campos existem e não são "undefined" (string)
+    for (const campo of campos) {
+      if (!item.hasOwnProperty(campo) || item[campo] === "undefined") {
+        return {
+          isValid: false,
+          erro: `Campo '${campo}' está ausente ou contém valor inválido ("undefined")`,
+        };
+      }
+    }
+  }
+
+  return { isValid: true, erro: null };
+}
 
 async function downloadFile(url, fileName) {
   try {
@@ -11,9 +38,7 @@ async function downloadFile(url, fileName) {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization:
-          getTokenFromUrl() ||
-          "HGxTXF7Jaidfv41l0qO2U36J9IdCAYKMV3CUmRWrHeVKCbR7eithZZzJEPrZ94VhsKvrRS9yBZDHR4u9shRe0vwRmXzStixQsT9HaTkP8dbYUW6UdJmxcr9g2XmgL1yRBqXJahhhx8F8x2F7F4Gbllld3rBLlkQOgALf75a9I0DOjbACDJzkOQ2RPzSsf6hKcrYHI7Dv0w1EkUTY0Ht4omMhiYqMCFSDkHLs53bQCcyZGB5KvRd4w43xGETCU5yOZEtV2MyeavBwLC9M9iDTC6ysePjfCTsySeqbofKi0lpvqFOaQz6zshyVD533EPAlB9RjtlKED86EfOjVwsdoOV4qDFTa891YKFhrpfViJ2T6ZM4d576euIbSGUKw44U6PfwSaT1a8sqi4hCGKUwJLWgQRjPIXAIZ4Q1qbwfQUSi5sXUwX4B4wgYXpaYfOep3EKIMp7IV7Mlq2wPKLhbz5Xx0paoKqAXmkAIJY4jwdd8jr0L9PuyaC8cOfyV0pGF4",
+        Authorization: getTokenFromUrl(),
       },
     });
 
@@ -60,12 +85,13 @@ async function fetchPalestras() {
       {
         method: "post",
         data: {
-          token: "e502251d-8c44-4f60-bebd-8787daca40b1",
+          token: getTokenFromUrl(),
         },
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: getTokenFromUrl(),
+          Authorization:
+            "HGxTXF7Jaidfv41l0qO2U36J9IdCAYKMV3CUmRWrHeVKCbR7eithZZzJEPrZ94VhsKvrRS9yBZDHR4u9shRe0vwRmXzStixQsT9HaTkP8dbYUW6UdJmxcr9g2XmgL1yRBqXJahhhx8F8x2F7F4Gbllld3rBLlkQOgALf75a9I0DOjbACDJzkOQ2RPzSsf6hKcrYHI7Dv0w1EkUTY0Ht4omMhiYqMCFSDkHLs53bQCcyZGB5KvRd4w43xGETCU5yOZEtV2MyeavBwLC9M9iDTC6ysePjfCTsySeqbofKi0lpvqFOaQz6zshyVD533EPAlB9RjtlKED86EfOjVwsdoOV4qDFTa891YKFhrpfViJ2T6ZM4d576euIbSGUKw44U6PfwSaT1a8sqi4hCGKUwJLWgQRjPIXAIZ4Q1qbwfQUSi5sXUwX4B4wgYXpaYfOep3EKIMp7IV7Mlq2wPKLhbz5Xx0paoKqAXmkAIJY4jwdd8jr0L9PuyaC8cOfyV0pGF4",
         },
       }
     );
@@ -73,6 +99,12 @@ async function fetchPalestras() {
     let palestras = response.data;
     // Limpa o container
     container.innerHTML = "";
+    if (!validarRetorno(palestras).isValid) {
+      errorMessage.innerHTML =
+        "Inscreva-se corretamente para baixar o conteúdo. <br> <a href='/'>Inscrever-se</a>";
+      errorMessage.style.display = "block";
+      return;
+    }
 
     // Verifica se há palestras
     if (!palestras.length) {
