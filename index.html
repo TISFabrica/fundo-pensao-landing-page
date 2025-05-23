@@ -1208,48 +1208,6 @@
             return iti.isValidNumber();
         }
 
-
-        // function onClick(e) {
-        //     e.preventDefault();
-        //     grecaptcha.enterprise.ready(async () => {
-        //     const token = await grecaptcha.enterprise.execute('6LfQVj0rAAAAAL341h0gLiaXtnb-6EHhNCqZ2XhL', {action: 'LOGIN'});
-        //     });
-        // }
-
-        // Função para lidar com o envio do formulário
-        // async function submitForm(event) {
-        //     event.preventDefault();
-
-        //     if (!isValidPhone()) {
-        //         alert('Por favor, insira um número de telefone válido');
-        //         return;
-        //     }
-
-        //     // Verificar reCAPTCHA
-        //     await grecaptcha.enterprise.ready(async () => {
-        //         const token = await grecaptcha.enterprise.execute('6LfQVj0rAAAAAL341h0gLiaXtnb-6EHhNCqZ2XhL', {action: 'LOGIN'});
-        //     });
-        //     const captchaErro = document.getElementById('captcha-erro');
-        //     if (!captchaResponse) {
-        //         captchaErro.style.display = 'block';
-        //         isValid = false;
-        //         return 
-        //     } else {
-        //         captchaErro.style.display = 'none';
-        //         return
-        //     }
-
-        //     const formData = new FormData(event.target);
-        //     formData.append('telefone_completo', iti.getNumber());
-        //     const data = Object.fromEntries(formData);
-
-        //     // Por enquanto, apenas mostrar uma mensagem de sucesso
-        //     alert('Obrigado por se inscrever! Em breve você receberá os materiais por email.');
-
-        //     fecharModal();
-        //     event.target.reset();
-        // }
-
         // Adicionar evento de clique a todos os botões que devem abrir o modal
         document.addEventListener('DOMContentLoaded', function () {
             const botoes = document.querySelectorAll('a[href="#webinar"]');

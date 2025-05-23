@@ -33,18 +33,20 @@ async function submitForm(event) {
     disabledButton(button, buttonText, spinner);
   }
 
+  const fullPhoneNumber = iti.getNumber();
   const formData = {
     nome: document.getElementById("nome").value,
     cargo: document.getElementById("cargo").value,
     empresa: document.getElementById("empresa").value,
     tamanho: document.getElementById("tamanho").value,
     email: document.getElementById("email").value,
-    telefone: document.getElementById("telefone").value,
+    telefone: fullPhoneNumber || document.getElementById("telefone").value,
     website: document.getElementById("website").value || "",
     informacoes_adicionais: document.getElementById("informacao").value || "",
     autorizo: document.querySelector('input[name="autorizo"]').checked,
     campanha: document.querySelector('input[name="campanha"]').value,
   };
+
   // Simulate sending data to the server (replace with actual API call)
   try {
     const response = await fetch(
